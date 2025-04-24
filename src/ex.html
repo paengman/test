@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>휠로 회전하는 원형 카드</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* 스크롤 막기 */
+      background-color: #333;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    .scene {
+      width: 100vw;
+      height: 100vh;
+      perspective: 2000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .carousel {
+      width: 800px;
+      height: 500px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+
+    .card {
+      width: 180px;
+      height: 260px;
+      background: #eee;
+      color: #222;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: bold;
+      backface-visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <div class="carousel" id="carousel"></div>
+  </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const cardCount = 15;
+    const radius = 1200;
+    let angle = 0;
+
+    // 카드 배치
+    for (let i = 0; i < cardCount; i++) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.textContent = i + 1;
+
+      const theta = (360 / cardCount) * i;
+      card.style.transform = `
+        rotateY(${theta}deg)
+        translateZ(${radius}px)
+        translate(-50%, -50%)
+      `;
+
+      carousel.appendChild(card);
+    }
+
+    // 마우스 휠로 회전
+    window.addEventListener('wheel', (e) => {
+      angle += e.deltaY * 0.1; // 회전 감도
+      carousel.style.transform = `rotateY(${angle}deg)`;
+    });
+  </script>
+
+</body>
+</html>
