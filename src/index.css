@@ -1,0 +1,114 @@
+/* 기본적인 설정 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Regulator Nova", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+/* 한글 폰트 설정 */
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "Regulator Nova", sans-serif;
+}
+
+html[lang="ko"] {
+  font-family: "S-CoreDream-3Light", sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+/* 섹션 스타일 */
+.section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+
+/* 이미지 위치 조정 (반응형) */
+#section1 img {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  width: 100vw;
+  max-width: 4000px;
+  height: auto;
+}
+
+/* 애니메이션 */
+@keyframes bounceHard {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-8vh); }
+  40%  { transform: translateY(4vh); }
+  60%  { transform: translateY(-6vh); }
+  80%  { transform: translateY(2vh); }
+  100% { transform: translateY(0); }
+}
+
+/* 배경 색상 */
+#section1, #section2, #section3, #section4 {
+  background-color: #F7F2EA;
+}
+
+/* 콘텐츠 */
+.content {
+  text-align: center;
+  max-width: 90%;
+}
+
+.content h2 {
+  font-size: 4vw;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2vh;
+}
+
+/* 다른 색상 강조 */
+.ex1 {
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.ex2 {
+  color: #7b7b7b;
+}
+
+/* 미디어 쿼리 - 모바일 대응 */
+@media screen and (max-width: 768px) {
+  .content h2 {
+    font-size: 6vw;
+  }
+
+  .content p,
+  .ex1, .ex2 {
+    font-size: 1em;
+  }
+
+  #section1 img {
+    width: 80vw;
+    top: 10vh;
+    right: 10vw;
+  }
+}
