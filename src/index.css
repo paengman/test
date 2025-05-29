@@ -6,8 +6,21 @@ html, body {
   font-family: "Regulator Nova", sans-serif;
   font-weight: 300;
   font-style: normal;
-  overflow: auto;
+  overflow: auto; /* ✅ 스크롤 기능은 유지하되 화면에선 스크롤바 안 보이게 */
   scroll-behavior: smooth;
+}
+
+html, body, .container {
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE, Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.container::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;                 /* Chrome, Safari */
 }
 
 /* 한글 폰트 설정 */
@@ -33,6 +46,42 @@ html[lang="ko"] {
   scroll-snap-type: y mandatory;
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  font-family: 'Loos ExtraWide';
+  font-weight: 400;
+}
+
+.navbar a:hover {
+  color: #FE6E3D;
+  font-family: 'Loos ExtraWide';
+  font-weight: 400;
+}
+
+
 /* 섹션 스타일 */
 .section {
   width: 100%;
@@ -40,7 +89,6 @@ html[lang="ko"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5vw;
   box-sizing: border-box;
   scroll-snap-align: start;
   transition: transform 0.5s ease-in-out;
@@ -65,6 +113,36 @@ html[lang="ko"] {
   60%  { transform: translateY(-6vh); }
   80%  { transform: translateY(2vh); }
   100% { transform: translateY(0); }
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: scrollMarquee 50s linear infinite;
+  font-size: clamp(4rem, 12vw, 16rem);
+  line-height: 1.1;
+}
+
+.harmony-word {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* 배경 색상 */

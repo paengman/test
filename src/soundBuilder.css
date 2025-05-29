@@ -1,0 +1,134 @@
+/* soundBuilder.css */
+
+.builder-section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.builder-controls {
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  background: none;
+}
+
+.builder-controls select,
+.builder-controls button {
+  padding: 10px 16px;
+  border: 1px solid #8B6F47;
+  background: #F7F2EA;
+  color: #4C3A2E;
+  border-radius: 18px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.builder-controls button:hover,
+.builder-controls select:hover {
+  background-color: #eaddc7;
+  border-color: #7B5E3F;
+}
+
+/* 컬러 버튼 컨테이너 */
+.color-buttons {
+  display: flex;
+  align-items: center;
+}
+
+/* 캔버스 영역 */
+.builder-canvas {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.builder-svg {
+  width: 100vw;
+  height: 100%;
+  border: none;
+}
+
+/* 모달 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 모달 본문 */
+.save-modal {
+  background-color: #fdf8f1;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  z-index: 1001;
+  width: 300px;
+  text-align: center;
+}
+
+.save-modal h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.save-modal input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #e9e3d8;
+  margin: 10px 0 20px;
+}
+
+.save-modal button {
+  margin: 5px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  background-color: #ddd;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 도형 선택 시 스타일 */
+.shape-selected circle,
+.shape-selected rect,
+.shape-selected polygon,
+.shape-selected path,
+.shape-selected line {
+  filter: drop-shadow(0 0 6px rgba(255, 173, 51, 0.9));
+  transition: filter 0.2s ease-in-out;
+}
+
+.shape-selected {
+  stroke: #fff;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 8px #fff);
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 8px #fff);
+  }
+  to {
+    filter: drop-shadow(0 0 16px #fff);
+  }
+}
